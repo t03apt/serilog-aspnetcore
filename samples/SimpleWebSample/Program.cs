@@ -4,6 +4,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Serilog;
+using Serilog.Formatting.Compact;
 
 namespace SimpleWebSample
 {
@@ -22,7 +23,7 @@ namespace SimpleWebSample
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
                 .Enrich.FromLogContext()
-                .WriteTo.Console()
+                .WriteTo.Console(new CompactJsonFormatter())
                 .CreateLogger();
 
             try

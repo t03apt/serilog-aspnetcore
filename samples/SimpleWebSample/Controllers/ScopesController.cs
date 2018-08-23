@@ -23,6 +23,14 @@ namespace SimpleWebSample.Controllers
             using (_logger.BeginScope("Some name"))
             using (_logger.BeginScope(42))
             using (_logger.BeginScope("Formatted {WithValue}", 12345))
+            using (_logger.BeginScope("object destruction {@class}", new
+            {
+                PropertyA = "123",
+                PropertyB = new
+                {
+                    PropertyC = "xxx"
+                }
+            }))
             using (_logger.BeginScope(new Dictionary<string, object> { ["ViaDictionary"] = 100 }))
             {
                 _logger.LogInformation("Hello from the Index!");
